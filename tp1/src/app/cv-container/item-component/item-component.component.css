@@ -1,0 +1,7 @@
+.image-parent {
+  max-width: 4rem;
+}
+.image-parent>img{
+  border-radius: 20%;
+}
+

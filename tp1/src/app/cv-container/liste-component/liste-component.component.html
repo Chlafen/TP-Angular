@@ -1,0 +1,9 @@
+<ul class="list-group p-4 rounded border bg-light h-100">
+  <div  *ngFor="let cv of listCvs; index as i">
+    <div [ngClass]="i==selectedId-1 ? 'bg-warning active ':'bg-white'" class="rounded">
+
+      <app-item-component  [cv]="cv" (onSelected)="changeSelected($event)"></app-item-component>
+    </div>
+    <hr *ngIf="i!=listCvs.length-1" class="hr hr-blurry" />
+  </div>
+</ul>

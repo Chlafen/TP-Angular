@@ -1,0 +1,9 @@
+<div class="container-sm p-5 rounded border" [ngStyle]="{'background-color':color}" >
+  <div class="input-group mb-3" >
+    <span class="input-group-text" id="basic-addon1">Color</span>
+    <input class="form-control" [(ngModel)]="color">
+  </div>
+  <p>You Chose: {{color}}</p>
+  <button class="input-group btn btn-dark" (click)="onChangeColor()">Reset Color</button>
+</div>
+

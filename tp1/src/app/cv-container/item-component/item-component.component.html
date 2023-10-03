@@ -1,0 +1,6 @@
+<li class="list-group-item d-flex  gap-5 align-items-center rounded mb-2 bg-transparent" role="button" (click)="emitCvSelected()">
+  <div class="image-parent">
+    <img [src]="cv.path|defaultImage" [alt]="cv.fname" class="img-fluid">
+  </div>
+  <p>{{cv.fname}} {{cv.lname}}</p>
+</li>

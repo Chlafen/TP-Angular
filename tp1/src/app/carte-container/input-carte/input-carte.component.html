@@ -1,0 +1,19 @@
+<div class="p-4 rounded border bg-light h-100" >
+  <div class="input-group mb-3" >
+    <span class="input-group-text" id="basic-addon1">First Name</span>
+    <input class="form-control" [(ngModel)]="person.fname" (input)="emitPersonChange($event)" >
+  </div>
+  <div class="input-group mb-3" >
+    <span class="input-group-text" id="basic-addon1">Last Name</span>
+    <input class="form-control" [(ngModel)]="person.lname" (input)="emitPersonChange($event)" >
+  </div>
+  <div class="input-group mb-3" >
+    <span class="input-group-text" id="basic-addon1">Job</span>
+    <input class="form-control" [(ngModel)]="person.job" (input)="emitPersonChange($event)">
+  </div>
+  <div class="input-group mb-3" >
+    <span class="input-group-text" id="basic-addon1">Path</span>
+    <input class="form-control" [(ngModel)]="person.path" (input)="emitPersonChange($event)">
+  </div>
+</div>
+
