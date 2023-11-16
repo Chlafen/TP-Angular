@@ -1,0 +1,8 @@
+<ul class="list-group p-4 rounded border bg-light h-100">
+    Liste des cvs embauchés
+    <div *ngFor="let cv of (cvs$ | async)" class="container">
+        <div class="rounded">
+            <app-embauche-item [cv]="cv"></app-embauche-item> 
+        </div>
+    </div>
+</ul>

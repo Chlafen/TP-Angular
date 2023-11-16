@@ -1,0 +1,4 @@
+<div class="row m-5">
+  <app-liste-component  class="col" [listCvs]="cvList!" (onSelected)="changeSelected($event)"></app-liste-component>
+  <app-cv-details class="col" [cv]="selectedCv"></app-cv-details>
+</div>

@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark" aria-label="Second navbar example">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">CV Manager</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse">
+      <ul *ngFor="let link of links" class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="link.path"
+            routerLinkActive="active bg-light rounded text-dark"
+            aria-current="page"
+            href="#"
+            >{{ link.label }}</a
+          >
+        </li>
+      </ul>
+      <button
+        *ngIf="!(isLoggedIn$ | async)"
+        class="btn btn-outline-success"
+        type="button"
+        [routerLink]="['/login']"
+      >
+        Login
+      </button>
+      <button
+        *ngIf="isLoggedIn$ | async"
+        class="btn btn-outline-danger"
+        type="button"
+        (click)="logout()"
+      >
+        Logout
+      </button>
+
+    </div>
+  </div>
+</nav>
+  
