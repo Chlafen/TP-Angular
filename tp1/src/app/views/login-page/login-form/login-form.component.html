@@ -1,15 +1,71 @@
-<form>
-    <div class="form-group">
-      <label for="exampleInputEmail1">Email address</label>
-      <input type="email" required [(ngModel)]="login.email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
-    <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" required [(ngModel)]="login.password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-    </div>
-    <div class="alert alert-danger mt-4" role="alert" *ngIf="error">
-      {{error}}
-    </div>
-    <button type="submit" class="btn btn-primary mt-4" (click)="onSubmit()">Submit</button>
+<p-toast position="bottom-right" key="br"></p-toast>
+
+<form class="col">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input
+      type="email"
+      required
+      [(ngModel)]="login.email"
+      class="form-control"
+      name="email"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      placeholder="Enter email"
+      #emailInput="ngModel"
+      [ngClass]="{
+        'is-invalid': isInvalidEmail && (emailInput.dirty || emailInput.touched)
+      }"
+    />
+    <small>
+      <div
+        class="alert alert-danger mt-2"
+        role="alert"
+        *ngIf="isInvalidEmail && (emailInput.dirty || emailInput.touched)"
+      >
+        Please enter a valid email address.
+      </div>
+    </small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input
+      type="password"
+      required
+      [(ngModel)]="login.password"
+      name="password"
+      class="form-control"
+      id="exampleInputPassword1"
+      placeholder="Password"
+      required
+      minlength="4"
+      #passwordInput="ngModel"
+      [ngClass]="{
+        'is-invalid':
+          isInvalidPassword && (passwordInput.dirty || passwordInput.touched)
+      }"
+    />
+    <small>
+      <div
+        class="alert alert-danger mt-2"
+        role="alert"
+        *ngIf="
+          isInvalidPassword && (passwordInput.dirty || passwordInput.touched)
+        "
+      >
+        Password must be at least 4 characters long.
+      </div>
+    </small>
+  </div>
+  <div class="alert alert-danger mt-4" role="alert" *ngIf="error">
+    {{ error }}
+  </div>
+  <button
+    type="submit"
+    class="btn btn-primary mt-4"
+    (click)="onSubmit()"
+    [disabled]="isButtonDisabled"
+  >
+    Submit
+  </button>
 </form>

@@ -26,6 +26,8 @@ import { LoginFormComponent } from './views/login-page/login-form/login-form.com
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NavItemComponent } from './components/navbar/nav-item/nav-item.component';
 import { EmbaucheItemComponent } from './views/cv-page/list-embauche/embauche-item/embauche-item.component';
+import { ToastModule } from 'primeng/toast';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -57,6 +59,8 @@ import { EmbaucheItemComponent } from './views/cv-page/list-embauche/embauche-it
     NgbModule,
     FormsModule,
     DataModule,
+    ToastModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -9,19 +9,30 @@ import { Component } from '@angular/core';
 export class ColorComponent {
 
   private colorList: String[] = [
-    'red','green', 'blue', 'yellow', "white"
+    'red','green', 'blue', 'yellow', "white", "black", "pink", "purple", "orange", "brown", "grey", "cyan", "magenta"
   ];
   private static defaultColor = "white"
-  color:String = "white"
+  color:String = "white" // two way binding
+  rainbow:String = "white"
+  timeout: any;
+
+  constructor() {
+    let hsl = 0;
+    this.timeout = setInterval(() => {
+      this.rainbow =  `hsl(${hsl}, 100%, 50%)`;
+      hsl = (hsl + 1) % 360;
+    }, 10)
+  }
 
   onChangeColor() {
     this.color =  ColorComponent.defaultColor
   }
-  onKey(event: any){
-    const inputVal:String = event.target.value.toLowerCase()
 
-    if(this.colorList.includes(inputVal)){
-      this.color = inputVal
-    }
+  onColorValid(){
+    clearInterval(this.timeout)
+  }
+
+  ngOnDestroy(){
+    clearInterval(this.timeout)
   }
 }

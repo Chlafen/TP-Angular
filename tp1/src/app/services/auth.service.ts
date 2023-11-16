@@ -83,4 +83,8 @@ export class AuthService {
     this.resetLocalStorage();
     return this.logoutUser.execute(token);
   }
+
+  isAuthed(): boolean {
+    return this.isLocalStorageTokenValid();
+  }
 }

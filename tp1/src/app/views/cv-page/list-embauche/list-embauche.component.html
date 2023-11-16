@@ -1,8 +1,19 @@
-<ul class="list-group p-4 rounded border bg-light h-100">
-    Liste des cvs embauchés
-    <div *ngFor="let cv of (cvs$ | async)" class="container">
-        <div class="rounded">
-            <app-embauche-item [cv]="cv"></app-embauche-item> 
-        </div>
+<ul
+  *ngIf="(cvs$ | async)!.length > 0; else elseBlock"
+  class="list-group p-4 rounded border bg-light h-100"
+>
+  Liste des cvs embauchés
+  <div *ngFor="let cv of cvs$ | async" class="container">
+    <div class="rounded">
+      <app-embauche-item [cv]="cv"></app-embauche-item>
     </div>
+  </div>
 </ul>
+
+<ng-template #elseBlock>
+  <div class="container empty-embauche rounded">
+    <div class="alert alert-info p-4 rounded border bg-light h-100">
+      <h4 class="text-center">Aucun cv embauché</h4>
+    </div>
+  </div>
+</ng-template>

@@ -1,4 +1,30 @@
-<p>cv-details-page works!</p>
-<div class="ng-container" *ngIf="cv$ | async as cv">
-    <app-cv-details [cv]="cv"></app-cv-details>
+<div class="ng-container w-50 m-auto pt-5" *ngIf="cv$ | async as cv">
+  <p-toast position="bottom-right" key="br"></p-toast>
+  <div *ngIf="cv !== undefined" class="card-container mb-0">
+    <div class="card">
+      <div class="front">
+        <div class="cover">
+          <img [src]="cv.path! | defaultImage" />
+        </div>
+        <div class="user">
+          <img class="img-circle" [src]="cv.path! | defaultImage" />
+        </div>
+        <div class="content">
+          <div class="main">
+            <h3 class="name">{{ cv.fname }} {{ cv.lname }}</h3>
+            <p class="profession">{{ cv.job }}</p>
+            <p class="text-center">"{{ cv.about }}"</p>
+          </div>
+
+          <button
+            class="btn btn-danger"
+            (click)="deleteCv(cv.id)"
+            title="Delete CV"
+          >
+            Delete CV
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
