@@ -11,9 +11,8 @@ export class ColorComponent {
   private colorList: String[] = [
     'red','green', 'blue', 'yellow', "white", "black", "pink", "purple", "orange", "brown", "grey", "cyan", "magenta"
   ];
-  private static defaultColor = "white"
-  color:String = "white" // two way binding
-  rainbow:String = "white"
+  color:String = "" // two way binding
+  rainbow:String = ""
   timeout: any;
 
   constructor() {
@@ -25,12 +24,12 @@ export class ColorComponent {
   }
 
   onChangeColor() {
-    this.color =  ColorComponent.defaultColor
+    this.color =  ""
   }
 
-  onColorValid(){
-    clearInterval(this.timeout)
-  }
+  get isColorValid () {
+    return this.colorList.includes(this.color.toLowerCase())
+  } 
 
   ngOnDestroy(){
     clearInterval(this.timeout)

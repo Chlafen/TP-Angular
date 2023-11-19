@@ -1,0 +1,11 @@
+<div class="form-outline my-4">
+    <input 
+        type="search" 
+        id="form1" 
+        class="form-control" 
+        placeholder="Search Cvs" 
+        aria-label="Search" 
+        [(ngModel)]="query"
+        (ngModelChange)="filterByName()"
+        />
+</div>

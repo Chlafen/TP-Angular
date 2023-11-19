@@ -28,6 +28,8 @@ import { NavItemComponent } from './components/navbar/nav-item/nav-item.componen
 import { EmbaucheItemComponent } from './views/cv-page/list-embauche/embauche-item/embauche-item.component';
 import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CvAgeTabsComponent } from './views/cv-page/cv-age-tabs/cv-age-tabs.component';
+import { SearchBarComponent } from './views/cv-page/search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CvDetailsPageComponent,
     LoginFormComponent,
     EmbaucheItemComponent,
+    CvAgeTabsComponent,
+    SearchBarComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { CvFilterModel } from 'src/app/domain/models/cv-filter.model';
 import { CvModel } from 'src/app/domain/models/cv.model';
 
 @Component({

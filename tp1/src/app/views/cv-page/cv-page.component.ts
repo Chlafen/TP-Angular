@@ -10,7 +10,7 @@ import { CvService } from 'src/app/services/cv.service';
 export class CvPageComponent {
   cvs$: Observable<CvModel[]>;
   constructor(private cvService: CvService) { 
-    this.cvs$ = this.cvService.cvs$;
+    this.cvs$ = this.cvService.filteredListCvs$
   }
 
 

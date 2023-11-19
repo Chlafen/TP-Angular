@@ -3,16 +3,17 @@
     <span
       class="input-group-text text-bold"
       id="basic-addon1"
-      [ngStyle]="{ 'background-color': rainbow, color: 'white' }"
+      [ngStyle]="{ 'background-color': isColorValid ? color : rainbow, color: 'white' }"
       ><b>Color</b></span
     >
     <input class="form-control" [(ngModel)]="color" />
   </div>
-  <p [ngStyle]="{ color: rainbow }">You Chose:</p>
+  <p [style]="{color:'black'}">You Chose:</p>
   <p>
     <b>{{ color.toUpperCase() }}</b>
+    {{ isColorValid || color.length==0 ? '' : '- is not a valid color' }}
   </p>
   <button class="input-group btn btn-dark" (click)="onChangeColor()">
-    Reset To White
+    Reset
   </button>
 </div>

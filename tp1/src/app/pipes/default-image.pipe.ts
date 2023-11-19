@@ -7,7 +7,7 @@ export class DefaultImagePipe implements PipeTransform {
 
   transform(value: String): String {
     if(value == "/assets/images/" || value == "")
-      return '/assets/images/1.png';
+      return '/assets/images/default.png';
     return value;
   }
 

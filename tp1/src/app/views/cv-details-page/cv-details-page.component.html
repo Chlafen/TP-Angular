@@ -10,10 +10,16 @@
           <img class="img-circle" [src]="cv.path! | defaultImage" />
         </div>
         <div class="content">
-          <div class="main">
-            <h3 class="name">{{ cv.fname }} {{ cv.lname }}</h3>
-            <p class="profession">{{ cv.job }}</p>
-            <p class="text-center">"{{ cv.about }}"</p>
+          <div class="main row text-start">
+            <p class="text-start"><b>NAME: </b>{{ cv.fname }} {{ cv.lname }}</p>
+            <p class="text-start"><b>JOB: </b> {{ cv.job }}</p>
+            <p class="text-start"><b>ABOUT: </b>"{{ cv.about }}"</p>
+            <p class="text-start"><b>AGE: </b>{{ cv.age }}</p>
+            <p class="text-start"><b>CIN: </b>{{ cv.cin }}</p>
+            <p class="text-start"><b>EMBACHE: </b>{{ cv.embauche ? 'OUI' : 'NON' }}</p>
+
+
+
           </div>
 
           <button

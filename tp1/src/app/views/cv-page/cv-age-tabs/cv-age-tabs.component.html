@@ -1,0 +1,11 @@
+<ul class="nav nav-tabs">
+    <li class="nav-item" *ngFor="let filter of filters">
+      <button 
+        class="nav-link active" 
+        [ngClass]="{'active': selectedFilter!.label == filter.label}" 
+        (click)="filterByAge(filter)"
+      >
+        <span>{{filter.label}}</span>
+      </button>
+    </li>
+  </ul>

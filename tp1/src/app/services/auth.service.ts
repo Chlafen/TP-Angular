@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Store } from './store/store';
+import { Store } from './store';
 import { TokenModel } from '../domain/models/token.model';
 import { LoginUserDto } from '../domain/dtos/user/login-user.dto';
 import { LogoutUser } from '../domain/usecases/user/logout-user.usecase';
