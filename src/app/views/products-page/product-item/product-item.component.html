@@ -1,0 +1,14 @@
+
+
+    <div class="card__img">
+        <img [src]="product.thumbnail" [alt]="product.title">
+    </div>
+        <p>{{ product.title }}</p>
+    <div class="card__precis">
+        <div></div>        
+        <div>
+            <span class="card__preci card__preci--before">{{product.price}}$</span>
+            <span class="card__preci card__preci--now">{{discountedPrice}}$</span>
+        </div>
+        <div></div>        
+    </div>

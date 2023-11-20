@@ -30,6 +30,12 @@ import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CvAgeTabsComponent } from './views/cv-page/cv-age-tabs/cv-age-tabs.component';
 import { SearchBarComponent } from './views/cv-page/search-bar/search-bar.component';
+import { ProductsPageComponent } from './views/products-page/products-page.component';
+import { ProductItemComponent } from './views/products-page/product-item/product-item.component';
+import { PaginationComponent } from './views/products-page/pagination/pagination.component';
+import { ProductsContainerComponent } from './views/products-page/products-container/products-container.component';
+import { RxjsPageComponent } from './views/rxjs-page/rxjs-page.component';
+import { MergeComponent } from './views/rxjs-page/merge/merge.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +62,12 @@ import { SearchBarComponent } from './views/cv-page/search-bar/search-bar.compon
     EmbaucheItemComponent,
     CvAgeTabsComponent,
     SearchBarComponent,
+    ProductsPageComponent,
+    ProductItemComponent,
+    PaginationComponent,
+    ProductsContainerComponent,
+    RxjsPageComponent,
+    MergeComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,12 @@
+<p-toast position="bottom-right" key="br"></p-toast>
+<div class="container m-5 rounded border mb-5 products-ctr">
+    <div class="ng-container mb-5" *ngIf="products$ | async as products">
+        <h3 class="text-start mb-4">Products</h3>
+        <div class="container bg-warning p-3 rounded text-white">
+            There are {{products.length}} products.
+        </div>
+        <button type="button" class="btn btn-outline-info my-4" (click)="loadMore()">Load More</button>
+        <app-products-container [products]="products"></app-products-container>
+    </div>
+</div>
+

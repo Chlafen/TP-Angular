@@ -10,6 +10,10 @@ import { UserRepository } from '../domain/repositories/user.repository';
 import { LoginUser } from '../domain/usecases/user/login-user.usecase';
 import { LogoutUser } from '../domain/usecases/user/logout-user.usecase';
 import { UserlRepositoryHttpImp } from './repositories/user/user-http-impl.repository';
+import { ProductRepository } from '../domain/repositories/product.repository';
+import { GetAllProducts } from '../domain/usecases/product/get-all-products.usecase';
+import { GetProductPage } from '../domain/usecases/product/get-product-page.usecase';
+import { ProductRepositoryHttpImpl } from './repositories/product/product-http-impl.repository';
 
 const getCvByIdUseCaseFactory = (cvRepo: CvRepository) => new GetCvById(cvRepo);
 export const getCvByIdUseCaseProvider = {
@@ -46,6 +50,20 @@ export const logoutUserUseCaseProvider = {
   deps: [UserRepository],
 };
 
+const getAllProductsFactory = (productRepo: ProductRepository) => new GetAllProducts(productRepo);
+export const getAllProductsProvider = {
+  provide: GetAllProducts,
+  useFactory: getAllProductsFactory,
+  deps: [ProductRepository],
+};
+
+const getProductPageFactory = (productRepo: ProductRepository) => new GetProductPage(productRepo);
+export const getProductPageProvider = {
+  provide: GetProductPage,
+  useFactory: getProductPageFactory,
+  deps: [ProductRepository],
+};
+
 @NgModule({
   providers: [
     getAllCvsUseCaseProvider,
@@ -53,8 +71,11 @@ export const logoutUserUseCaseProvider = {
     deleteCvUseCaseProvider,
     loginUserUseCaseProvider,
     logoutUserUseCaseProvider,
+    getAllProductsProvider,
+    getProductPageProvider,
     { provide: CvRepository, useClass: CvRepositoryHttpImpl },
     { provide: UserRepository, useClass: UserlRepositoryHttpImp },
+    { provide: ProductRepository, useClass: ProductRepositoryHttpImpl },
   ],
   imports: [CommonModule, HttpClientModule],
 })
