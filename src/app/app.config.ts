@@ -6,6 +6,7 @@ import { CvDetailsPageComponent } from './views/cv-details-page/cv-details-page.
 import { LoginPageComponent } from './views/login-page/login-page.component';
 import { NotfoundPageComponent } from './views/notfound-page/notfound-page.component';
 import { ProductsPageComponent } from './views/products-page/products-page.component';
+import { RxjsPageComponent } from './views/rxjs-page/rxjs-page.component';
 
 export const ROUTES: Routes = [
   {path:"", redirectTo:"home", pathMatch:"full"},
@@ -14,7 +15,7 @@ export const ROUTES: Routes = [
   {path:"cv/:id",component:CvDetailsPageComponent},
   {path:"login",component:LoginPageComponent},
   {path:"color",component:ColorPageComponent, title:"Color"},
-  {path:"rxjs", component:ColorPageComponent, title:"RxJS"},
+  {path:"rxjs", component:RxjsPageComponent, title:"RxJS"},
   {path:"products", component:ProductsPageComponent, title:"Products"},
   {path:"**",component:NotfoundPageComponent},
 ];

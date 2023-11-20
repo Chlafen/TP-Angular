@@ -1,0 +1,47 @@
+<div class="d-flex flex-column gap-4 container rounded border p-3 bg-light">
+  <label for="inputOne">Stream 1</label>
+  <input
+    [formControl]="inputOne"
+    (blur)="changeStreamOneValue()"
+    type="number"
+    class="form-control"
+  />
+  <button
+    class="btn btn-danger"
+    (click)="endFirstStream()"
+    [disabled]="firstTerminated"
+  >
+    Terminate Stream 1
+  </button>
+  <span class="bg-info text-white p-3 rounded" *ngIf="firstTerminated"
+    >Stream 1 is completed</span
+  >
+  <label for="inputOne">Stream 2</label>
+  <input
+    [formControl]="inputTwo"
+    (blur)="changeStreamTwoValue()"
+    type="number"
+    class="form-control"
+  />
+  <button
+    class="btn btn-danger"
+    (click)="endSecondStream()"
+    [disabled]="secondTerminated"
+  >
+    Terminate Stream 2
+  </button>
+  <span class="bg-info text-white p-3 rounded" *ngIf="secondTerminated"
+    >Stream 2 is completed</span
+  >
+
+  <br />
+  <div class="card text-left">
+    <div class="card-header">
+      <p>Merge : {{ mergedValue$ | async }}</p>
+      <p>Scan : {{ scanValue$ | async }}</p>
+      <p>Reduce : {{ reduceValue$ | async }}
+        <span *ngIf="!(firstTerminated&&secondTerminated)">{{loading}}</span>
+      </p>
+    </div>
+  </div>
+</div>
