@@ -5,10 +5,7 @@ import { AppRoutingModule } from './app.routes';
 import { AppComponent } from './app.component';
 import { ColorComponent } from './views/color-page/color/color.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { InputCarteComponent } from './carte-container/input-carte/input-carte.component';
-import { CarteVisiteComponent } from './carte-container/carte-visite/carte-visite.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CarteContainerComponent } from './carte-container/carte-container.component';
 import { DefaultImagePipe } from './pipes/default-image.pipe';
 import { CvPageComponent } from './views/cv-page/cv-page.component';
 import { LoginPageComponent } from './views/login-page/login-page.component';
@@ -41,9 +38,6 @@ import { MergeComponent } from './views/rxjs-page/merge/merge.component';
   declarations: [
     AppComponent,
     ColorComponent,
-    InputCarteComponent,
-    CarteVisiteComponent,
-    CarteContainerComponent,
     CvContainerComponent,
     ListeComponentComponent,
     CvDetailsComponent,
