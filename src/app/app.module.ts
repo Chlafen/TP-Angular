@@ -33,6 +33,9 @@ import { PaginationComponent } from './views/products-page/pagination/pagination
 import { ProductsContainerComponent } from './views/products-page/products-container/products-container.component';
 import { RxjsPageComponent } from './views/rxjs-page/rxjs-page.component';
 import { MergeComponent } from './views/rxjs-page/merge/merge.component';
+import { MasterDetailsComponent } from './views/master-details/master-details.component';
+import { AutocompleteComponent } from './views/cv-page/autocomplete/autocomplete.component';
+import { SearchListComponent } from './views/cv-page/search-list/search-list.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +65,9 @@ import { MergeComponent } from './views/rxjs-page/merge/merge.component';
     ProductsContainerComponent,
     RxjsPageComponent,
     MergeComponent,
+    MasterDetailsComponent,
+    AutocompleteComponent,
+    SearchListComponent,
   ],
   imports: [
     BrowserModule,

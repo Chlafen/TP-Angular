@@ -1,0 +1,9 @@
+<ul
+  class="list-group p-4 rounded border bg-light h-100"
+>
+  <div *ngFor="let cv of listCvs" class="container">
+    <a class="rounded" routerLink="/cv/list/{{ cv.id }}">
+      <app-embauche-item [cv]="cv"></app-embauche-item>
+    </a>
+  </div>
+</ul>

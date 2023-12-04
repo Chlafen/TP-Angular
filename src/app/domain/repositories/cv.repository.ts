@@ -6,4 +6,5 @@ export abstract class CvRepository {
     abstract delete(id: number): Observable<CvModel>;
     abstract findAll(): Observable<CvModel[]>;
     abstract findOne(id: number): Observable<CvModel>;
+    abstract search(query: string): Observable<CvModel[]>;
 }

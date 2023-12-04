@@ -5,7 +5,7 @@
         <div class="container bg-warning p-3 rounded text-white">
             There are {{products.length}} products.
         </div>
-        <button type="button" class="btn btn-outline-info my-4" (click)="loadMore()">Load More</button>
+        <button type="button" class="btn btn-outline-info my-4" (click)="loadMore()" [disabled]="buttonDisabled">Load More</button>
         <app-products-container [products]="products"></app-products-container>
     </div>
 </div>

@@ -1,7 +1,6 @@
-<app-cv-age-tabs></app-cv-age-tabs>
-<app-search-bar></app-search-bar>
+<app-cv-age-tabs (filter)="onFilterChanged($event)"></app-cv-age-tabs>
 <ul class="list-group p-4 rounded border bg-light">
-  <div  *ngFor="let cv of listCvs; index as i">
+  <div  *ngFor="let cv of filteredCvs; index as i">
     <div [ngClass]="i==selectedId-1 ? 'bg-warning active ':'bg-white'" class="rounded">
 
       <app-item-component  [cv]="cv" (onSelected)="changeSelected($event)"></app-item-component>

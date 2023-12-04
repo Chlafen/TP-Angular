@@ -12,7 +12,6 @@ import { MessageService } from 'primeng/api';
   providers: [MessageService]
 })
 export class NavbarComponent {
-  links:NavItemData[]
   isLoggedIn$: Observable<boolean>
   isLoggedIn: boolean = false
 
@@ -21,8 +20,6 @@ export class NavbarComponent {
     private router:Router,
     private messageService: MessageService,
   ) {
-    this.links = ROUTES.map((route) =>  new NavItemData(route.path!, route.title as string))
-    this.links = this.links.filter((link) => link.path !== "**" && link.path !== "" && link.label !== undefined)
     this.isLoggedIn$ = this.authService.isAuthed$
   }
 
@@ -41,13 +38,3 @@ export class NavbarComponent {
   }
 }
 
-
-
-class NavItemData {
-  path: string;
-  label: string;
-  constructor(path: string, label: string) {
-    this.path = path;
-    this.label = label;
-  }
-}

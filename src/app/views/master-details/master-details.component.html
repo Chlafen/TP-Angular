@@ -1,0 +1,10 @@
+<div class="row">
+  <app-autocomplete></app-autocomplete>
+    <div *ngFor="let cv of (cvs$ | async)!"> 
+      <app-item-component  [cv]="cv" (onSelected)="showDetails(cv)"></app-item-component>
+
+    </div>
+</div>
+<div class="row" >
+    <router-outlet></router-outlet>
+</div>

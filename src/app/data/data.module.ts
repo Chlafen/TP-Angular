@@ -14,6 +14,7 @@ import { ProductRepository } from '../domain/repositories/product.repository';
 import { GetAllProducts } from '../domain/usecases/product/get-all-products.usecase';
 import { GetProductPage } from '../domain/usecases/product/get-product-page.usecase';
 import { ProductRepositoryHttpImpl } from './repositories/product/product-http-impl.repository';
+import { SearchCv } from '../domain/usecases/cv/search-cv.usecase';
 
 const getCvByIdUseCaseFactory = (cvRepo: CvRepository) => new GetCvById(cvRepo);
 export const getCvByIdUseCaseProvider = {
@@ -64,11 +65,19 @@ export const getProductPageProvider = {
   deps: [ProductRepository],
 };
 
+const searchCvUseCaseFactory = (cvRepo: CvRepository) => new SearchCv(cvRepo);
+export const searchCvUseCaseProvider = {
+  provide: SearchCv,
+  useFactory: searchCvUseCaseFactory,
+  deps: [CvRepository],
+};
+
 @NgModule({
   providers: [
     getAllCvsUseCaseProvider,
     getCvByIdUseCaseProvider,
     deleteCvUseCaseProvider,
+    searchCvUseCaseProvider,
     loginUserUseCaseProvider,
     logoutUserUseCaseProvider,
     getAllProductsProvider,

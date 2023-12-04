@@ -4,19 +4,76 @@
     <a class="navbar-brand" href="#">CV Manager</a>
 
     <div class="collapse navbar-collapse">
-      <ul *ngFor="let link of links" class="navbar-nav ms-2">
+      <ul class="navbar-nav ms-2">
         <li class="nav-item flex-shrink">
           <a
             class="nav-link"
-            [routerLink]="link.path"
+            [routerLink]="['home']"
             routerLinkActive="active bg-light rounded text-dark"
             aria-current="page"
             [ngStyle]="{ width: '100px', textAlign: 'center' }"
             href="#"
-            >{{ link.label }}</a
+            >Home</a
+          >
+        </li>
+        <li class="nav-item flex-shrink">
+          <a
+            class="nav-link"
+            [routerLink]="['cv']"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLinkActive="active bg-light rounded text-dark"
+            aria-current="page"
+            [ngStyle]="{ width: '100px', textAlign: 'center' }"
+            href="#"
+            >Cv</a
+          >
+        </li>
+        <li class="nav-item flex-shrink">
+          <a
+            class="nav-link"
+            [routerLink]="['cv', 'list']"
+            routerLinkActive="active bg-light rounded text-dark"
+            aria-current="page"
+            [ngStyle]="{ width: '100px', textAlign: 'center' }"
+            href="#"
+            >List</a
+          >
+        </li>
+        <li class="nav-item flex-shrink">
+          <a
+            class="nav-link"
+            [routerLink]="['color']"
+            routerLinkActive="active bg-light rounded text-dark"
+            aria-current="page"
+            [ngStyle]="{ width: '100px', textAlign: 'center' }"
+            href="#"
+            >Color</a
+          >
+        </li>
+        <li class="nav-item flex-shrink">
+          <a
+            class="nav-link"
+            [routerLink]="['rxjs']"
+            routerLinkActive="active bg-light rounded text-dark"
+            aria-current="page"
+            [ngStyle]="{ width: '100px', textAlign: 'center' }"
+            href="#"
+            >RxJS</a
+          >
+        </li>
+        <li class="nav-item flex-shrink">
+          <a
+            class="nav-link"
+            [routerLink]="['products']"
+            routerLinkActive="active bg-light rounded text-dark"
+            aria-current="page"
+            [ngStyle]="{ width: '100px', textAlign: 'center' }"
+            href="#"
+            >Products</a
           >
         </li>
       </ul>
+
       <button
         *ngIf="!(isLoggedIn$ | async)"
         class="btn btn-outline-success"

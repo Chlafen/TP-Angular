@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable, map, tap } from 'rxjs';
 import { CvModel } from 'src/app/domain/models/cv.model';
-import { CvService } from 'src/app/services/cv.service';
+
 @Component({
   selector: 'app-cv-page',
   templateUrl: './cv-page.component.html',
@@ -9,8 +10,12 @@ import { CvService } from 'src/app/services/cv.service';
 })
 export class CvPageComponent {
   cvs$: Observable<CvModel[]>;
-  constructor(private cvService: CvService) { 
-    this.cvs$ = this.cvService.filteredListCvs$
+
+  constructor(private router:ActivatedRoute) { 
+    this.cvs$ = this.router.data.pipe(
+      map((data) => data['cvs']), 
+      tap((cvs)=>console.log(cvs))
+    )
   }
 
 
