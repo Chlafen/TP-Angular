@@ -15,6 +15,9 @@ import { GetAllProducts } from '../domain/usecases/product/get-all-products.usec
 import { GetProductPage } from '../domain/usecases/product/get-product-page.usecase';
 import { ProductRepositoryHttpImpl } from './repositories/product/product-http-impl.repository';
 import { SearchCv } from '../domain/usecases/cv/search-cv.usecase';
+import { AddCv } from '../domain/usecases/cv/add-cv.usecase';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthTokenInterceptor } from './http-interceptors/auth-token.interceptor';
 
 const getCvByIdUseCaseFactory = (cvRepo: CvRepository) => new GetCvById(cvRepo);
 export const getCvByIdUseCaseProvider = {
@@ -25,9 +28,9 @@ export const getCvByIdUseCaseProvider = {
 
 const getAllCvsUseCaseFactory = (cvRepo: CvRepository) => new GetAllCvs(cvRepo);
 export const getAllCvsUseCaseProvider = {
-    provide: GetAllCvs,
-    useFactory: getAllCvsUseCaseFactory,
-    deps: [CvRepository],
+  provide: GetAllCvs,
+  useFactory: getAllCvsUseCaseFactory,
+  deps: [CvRepository],
 };
 
 const deleteCvUseCaseFactory = (cvRepo: CvRepository) => new DeleteCv(cvRepo);
@@ -37,28 +40,32 @@ export const deleteCvUseCaseProvider = {
   deps: [CvRepository],
 };
 
-const loginUserUseCaseFactory = (userRepo: UserRepository) => new LoginUser(userRepo);
+const loginUserUseCaseFactory = (userRepo: UserRepository) =>
+  new LoginUser(userRepo);
 export const loginUserUseCaseProvider = {
   provide: LoginUser,
   useFactory: loginUserUseCaseFactory,
   deps: [UserRepository],
 };
 
-const logoutUserUseCaseFactory = (userRepo: UserRepository) => new LogoutUser(userRepo);
+const logoutUserUseCaseFactory = (userRepo: UserRepository) =>
+  new LogoutUser(userRepo);
 export const logoutUserUseCaseProvider = {
   provide: LogoutUser,
   useFactory: logoutUserUseCaseFactory,
   deps: [UserRepository],
 };
 
-const getAllProductsFactory = (productRepo: ProductRepository) => new GetAllProducts(productRepo);
+const getAllProductsFactory = (productRepo: ProductRepository) =>
+  new GetAllProducts(productRepo);
 export const getAllProductsProvider = {
   provide: GetAllProducts,
   useFactory: getAllProductsFactory,
   deps: [ProductRepository],
 };
 
-const getProductPageFactory = (productRepo: ProductRepository) => new GetProductPage(productRepo);
+const getProductPageFactory = (productRepo: ProductRepository) =>
+  new GetProductPage(productRepo);
 export const getProductPageProvider = {
   provide: GetProductPage,
   useFactory: getProductPageFactory,
@@ -72,6 +79,19 @@ export const searchCvUseCaseProvider = {
   deps: [CvRepository],
 };
 
+const addCvUseCaseFactory = (cvRepo: CvRepository) => new AddCv(cvRepo);
+export const addCvUseCaseProvider = {
+  provide: AddCv,
+  useFactory: addCvUseCaseFactory,
+  deps: [CvRepository],
+};
+
+export const authTokenInterceptorProvider = {
+  provide: HTTP_INTERCEPTORS,
+  useClass: AuthTokenInterceptor,
+  multi: true,
+};
+
 @NgModule({
   providers: [
     getAllCvsUseCaseProvider,
@@ -82,10 +102,12 @@ export const searchCvUseCaseProvider = {
     logoutUserUseCaseProvider,
     getAllProductsProvider,
     getProductPageProvider,
+    addCvUseCaseProvider,
+    authTokenInterceptorProvider,
     { provide: CvRepository, useClass: CvRepositoryHttpImpl },
     { provide: UserRepository, useClass: UserlRepositoryHttpImp },
     { provide: ProductRepository, useClass: ProductRepositoryHttpImpl },
   ],
   imports: [CommonModule, HttpClientModule],
 })
-export class DataModule { }
+export class DataModule {}

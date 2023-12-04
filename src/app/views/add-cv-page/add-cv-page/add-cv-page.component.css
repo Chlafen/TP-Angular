@@ -1,0 +1,11 @@
+.max-width-100{
+    width: 200px;
+    justify-self: center;
+}
+
+
+.max-width-100:disabled{
+    background-color: #b1b1b1;
+    color: rgb(55, 55, 62);
+    cursor: not-allowed;
+}

@@ -1,5 +1,5 @@
+<p-toast position="bottom-right" key="br"></p-toast>
 <div class="ng-container w-50 m-auto pt-5" *ngIf="cv$ | async as cv">
-  <p-toast position="bottom-right" key="br"></p-toast>
   <div *ngIf="cv !== undefined" class="card-container mb-0">
     <div class="card">
       <div class="front">
@@ -16,10 +16,9 @@
             <p class="text-start"><b>ABOUT: </b>"{{ cv.about }}"</p>
             <p class="text-start"><b>AGE: </b>{{ cv.age }}</p>
             <p class="text-start"><b>CIN: </b>{{ cv.cin }}</p>
-            <p class="text-start"><b>EMBACHE: </b>{{ cv.embauche ? 'OUI' : 'NON' }}</p>
-
-
-
+            <p class="text-start">
+              <b>EMBACHE: </b>{{ cv.embauche ? "OUI" : "NON" }}
+            </p>
           </div>
 
           <button

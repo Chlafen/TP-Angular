@@ -11,6 +11,9 @@ import { cvReducerResolver } from './reducers/cv-reducer.resolver';
 import { MasterDetailsComponent } from './views/master-details/master-details.component';
 import { CvDetailsComponent } from './views/cv-page/cv-container/cv-details/cv-details.component';
 import { detailsReducerResolver } from './reducers/details-reducer.resolver';
+import { AddCvPageComponent } from './views/add-cv-page/add-cv-page/add-cv-page.component';
+import { UpdateCvPageComponent } from './views/update-cv-page/update-cv-page.component';
+import { authGuardGuard } from './guards/auth-guard.guard';
 
 export const ROUTES: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -23,6 +26,21 @@ export const ROUTES: Routes = [
         component: CvPageComponent,
         title: 'CV',
         resolve: { cvs: cvReducerResolver },
+      },
+      {
+        path: 'add',
+        component: AddCvPageComponent,
+        title: 'Add CV',
+        canActivate: [authGuardGuard],
+      },
+      {
+        path: 'update/:id',
+        component: UpdateCvPageComponent,
+        title: 'Add CV',
+        resolve: {
+          cv: detailsReducerResolver,
+        },
+        canActivate: [authGuardGuard],
       },
       {
         path: 'list',
@@ -46,11 +64,12 @@ export const ROUTES: Routes = [
       },
     ],
   },
-  { path: 'login', component: LoginPageComponent },
+
+  { path: 'login', component: LoginPageComponent, title: 'Login' },
   { path: 'color', component: ColorPageComponent, title: 'Color' },
   { path: 'rxjs', component: RxjsPageComponent, title: 'RxJS' },
   { path: 'products', component: ProductsPageComponent, title: 'Products' },
-  { path: '**', component: NotfoundPageComponent },
+  { path: '**', component: NotfoundPageComponent, title: 'Not Found' },
 ];
 
 export const ENDPOINT = 'https://apilb.tridevs.net/api/';

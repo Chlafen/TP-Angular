@@ -36,6 +36,8 @@ import { MergeComponent } from './views/rxjs-page/merge/merge.component';
 import { MasterDetailsComponent } from './views/master-details/master-details.component';
 import { AutocompleteComponent } from './views/cv-page/autocomplete/autocomplete.component';
 import { SearchListComponent } from './views/cv-page/search-list/search-list.component';
+import { AddCvPageComponent } from './views/add-cv-page/add-cv-page/add-cv-page.component';
+import { UpdateCvPageComponent } from './views/update-cv-page/update-cv-page.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +70,8 @@ import { SearchListComponent } from './views/cv-page/search-list/search-list.com
     MasterDetailsComponent,
     AutocompleteComponent,
     SearchListComponent,
+    AddCvPageComponent,
+    UpdateCvPageComponent,
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,8 @@ import { Observable, catchError, map, tap } from 'rxjs';
 import { CvFilterModel } from '../domain/models/cv-filter.model';
 import { CvFilterName } from '../domain/models/filters/cv-filter-name.filter';
 import { SearchCv } from '../domain/usecases/cv/search-cv.usecase';
+import { AddCv } from '../domain/usecases/cv/add-cv.usecase';
+import { AddCvModel } from '../domain/models/add-cv.model';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +22,7 @@ export class CvService {
   constructor(
     private getAllCvs: GetAllCvs,
     private getCvById: GetCvById,
+    private addCv: AddCv,
     private delteCv: DeleteCv,
     private searchCv: SearchCv,
     private authService: AuthService
@@ -113,16 +116,20 @@ export class CvService {
     );
   }
 
-  clearCv(): void {
-    this.store.update((_) => []);
-  }
+  add(cv: AddCvModel): Observable<string> {
+    return this.addCv.execute(cv).pipe(
+      map((cv) => {
+        console.log(cv);
+        this.store.update((cvs) => [...cvs, cv]);
+        return null;
+      }),
+      catchError(async (res) => {
+        console.log('error while adding cv');
 
-  setFilter(filter: CvFilterModel): void {
-    this.filterStore.update((_) => filter);
-    this.store.update((_) => _);
+        res = JSON.parse(JSON.stringify(res));
+        console.log(res);
+        return res.error.error.message;
+      })
+    );
   }
-
-  // add(cv: CvModel): void {
-  //   this.store.update(cvs => [...cvs, cv]);
-  // }
 }

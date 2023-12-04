@@ -6,6 +6,7 @@ import { CvImplementationRepositoryMapper } from './mappers/cv-repository.mapper
 import { ENDPOINT } from 'src/app/app.config';
 import { Injectable } from '@angular/core';
 import { CvEntity } from './entities/cv-entity';
+import { AddCvModel } from 'src/app/domain/models/add-cv.model';
 
 @Injectable({
   providedIn: 'root',
@@ -17,9 +18,24 @@ export class CvRepositoryHttpImpl extends CvRepository {
     super();
   }
 
-  override create(cv: CvModel): Observable<CvModel> {
+  private addMapTo(cv: AddCvModel): Object {
+    return {
+      name: cv.fname!,
+      firstname: cv.lname!,
+      age: cv.age!,
+      cin: cv.cin!,
+      job: cv.job!,
+      path: cv.path!,
+    };
+  }
+
+  override create(cv: AddCvModel): Observable<CvModel> {
     let url = ENDPOINT + this.uri;
-    return this.http.post<CvModel>(url, this.cvMapper.mapTo(cv));
+    if (cv.path === undefined) {
+      cv.path = 'https://www.w3schools.com/howto/img_avatar.png';
+    }
+
+    return this.http.post<CvModel>(url, this.addMapTo(cv));
   }
   override update(cv: CvModel): Observable<CvModel> {
     let url = ENDPOINT + this.uri + '/' + cv.id;
@@ -27,11 +43,8 @@ export class CvRepositoryHttpImpl extends CvRepository {
   }
   override delete(id: number): Observable<CvModel> {
     let url = ENDPOINT + this.uri + '/' + id;
-    let token = localStorage.getItem('token');
 
-    return this.http.delete<CvModel>(url, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    return this.http.delete<CvModel>(url);
   }
   override findAll(): Observable<CvModel[]> {
     let url = ENDPOINT + this.uri;

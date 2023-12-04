@@ -1,0 +1,102 @@
+<p-toast position="bottom-right" key="br"></p-toast>
+<div class="p-4 rounded border bg-light h-100">
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">First Name</span>
+    <input
+      class="form-control"
+      required
+      [(ngModel)]="cv.fname"
+      #fnameInput="ngModel"
+      [ngClass]="{
+        'is-invalid':
+          (fnameInput.dirty || fnameInput.touched) && fnameInput.invalid
+      }"
+    />
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">Last Name</span>
+    <input
+      class="form-control"
+      required
+      [(ngModel)]="cv.lname"
+      #lnameInput="ngModel"
+      [ngClass]="{
+        'is-invalid':
+          (lnameInput.dirty || lnameInput.touched) && lnameInput.invalid
+      }"
+    />
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">Job</span>
+    <input
+      class="form-control"
+      required
+      [(ngModel)]="cv.job"
+      #jobInput="ngModel"
+      [ngClass]="{
+        'is-invalid': (jobInput.dirty || jobInput.touched) && jobInput.invalid
+      }"
+    />
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">Age</span>
+    <input
+      class="form-control"
+      [(ngModel)]="cv.age"
+      required
+      [type]="'number'"
+      [min]="16"
+      [max]="65"
+      #ageInput="ngModel"
+      [ngClass]="{
+        'is-invalid': (ageInput.dirty || ageInput.touched) && ageInput.invalid
+      }"
+    />
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">CIN</span>
+    <input
+      class="form-control"
+      [(ngModel)]="cv.cin"
+      required
+      [type]="'number'"
+      [min]="0"
+      [max]="99999999"
+      #cinInput="ngModel"
+      [ngClass]="{
+        'is-invalid': (cinInput.dirty || cinInput.touched) && cinInput.invalid
+      }"
+    />
+  </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text" id="basic-addon1">About</span>
+    <input
+      class="form-control"
+      [(ngModel)]="cv.about"
+      #aboutInput="ngModel"
+      [ngClass]="{
+        'is-invalid':
+          (aboutInput.dirty || aboutInput.touched) && aboutInput.invalid
+      }"
+    />
+  </div>
+
+  <!-- submit -->
+  <div class="d-grid gap-2">
+    <button
+      class="btn btn-primary max-width-100"
+      type="submit"
+      [disabled]="
+        fnameInput.invalid ||
+        lnameInput.invalid ||
+        jobInput.invalid ||
+        ageInput.invalid ||
+        cinInput.invalid ||
+        aboutInput.invalid
+      "
+      (click)="addCv()"
+    >
+      Submit
+    </button>
+  </div>
+</div>
