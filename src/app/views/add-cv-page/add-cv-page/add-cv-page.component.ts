@@ -13,7 +13,23 @@ import { Router } from '@angular/router';
 })
 export class AddCvPageComponent {
   cv: AddCvModel = {};
+  canDeactivate() {
+    if (
+      this.cv.lname ||
+      this.cv.fname ||
+      this.cv.age ||
+      this.cv.cin ||
+      this.cv.job ||
+      this.cv.about
+    ) {
+      console.log('cant deactivate');
 
+      return window.confirm(
+        'Are you sure you want to leave this page? you have unsaved changes'
+      );
+    }
+    return true;
+  }
   constructor(
     private messageService: MessageService,
     private cvService: CvService,

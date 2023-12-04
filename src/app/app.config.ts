@@ -14,6 +14,7 @@ import { detailsReducerResolver } from './reducers/details-reducer.resolver';
 import { AddCvPageComponent } from './views/add-cv-page/add-cv-page/add-cv-page.component';
 import { UpdateCvPageComponent } from './views/update-cv-page/update-cv-page.component';
 import { authGuardGuard } from './guards/auth-guard.guard';
+import { canDeactivateGuard } from './guards/can-deactivate.guard';
 
 export const ROUTES: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -32,6 +33,7 @@ export const ROUTES: Routes = [
         component: AddCvPageComponent,
         title: 'Add CV',
         canActivate: [authGuardGuard],
+        canDeactivate: [canDeactivateGuard],
       },
       {
         path: 'update/:id',
@@ -41,6 +43,7 @@ export const ROUTES: Routes = [
           cv: detailsReducerResolver,
         },
         canActivate: [authGuardGuard],
+        canDeactivate: [canDeactivateGuard],
       },
       {
         path: 'list',
